@@ -1,12 +1,13 @@
 gulp        = require 'gulp'
-concat      = require 'gulp-concat'
-uglify      = require 'gulp-uglify'
+cache       = require 'gulp-cache'
 coffee      = require 'gulp-coffee'
-sass        = require 'gulp-ruby-sass'
+concat      = require 'gulp-concat'
+imagemin    = require 'gulp-imagemin'
 pleeease    = require 'gulp-pleeease'
 plumber     = require 'gulp-plumber'
-imagemin    = require 'gulp-imagemin'
-cache       = require 'gulp-cache'
+sass        = require 'gulp-ruby-sass'
+uglify      = require 'gulp-uglify'
+usermin     = require 'gulp-usemin'
 bower       = require 'bower'
 browserSync = require 'browser-sync'
 
@@ -29,19 +30,6 @@ config.output =
   css: "#{config.tmp}/#{config.dir.css}"
 
 config.bower =
-  js: [
-    "#{config.dir.bower}/angular/angular.min.js"
-    "#{config.dir.bower}/onsenui/build/js/onsen.min.js"
-    "#{config.dir.bower}/jquery/dist/jquery.min.js"
-    "#{config.dir.bower}/bootstrap-sass-official/assets/javascripts/bootstrap.js"
-    "#{config.dir.bower}/lodash/dist/lodash.compat.min.js"
-    "#{config.dir.bower}/konashi-bridge.js/js/konashi-bridge.js"
-  ]
-  css: [
-    "#{config.dir.bower}/onsenui/build/css/onsenui.css"
-    "#{config.dir.bower}/onsenui/build/css/onsen-css-components.css"
-    "#{config.dir.bower}/fontawesome/css/font-awesome.min.css"
-  ]
   sass: [
     "#{config.dir.bower}/bootstrap-sass-official/assets/stylesheets"
   ]
@@ -51,15 +39,6 @@ config.bower =
   ]
 
 load_components = ->
-  gulp.src config.bower.js
-    .pipe uglify()
-    .pipe concat 'vendor.js'
-    .pipe gulp.dest config.output.js
-
-  gulp.src config.bower.css
-    .pipe concat 'vendor.css'
-    .pipe gulp.dest config.output.css
-
   gulp.src config.bower.fonts
     .pipe gulp.dest "#{config.tmp}/fonts"
 
@@ -101,7 +80,7 @@ gulp.task 'reload', ->
 gulp.task 'server', ->
   browserSync.init
     server:
-      baseDir: [config.src, config.tmp]
+      baseDir: [config.src, config.tmp, '.']
     open: true
 
 gulp.task 'watch', ->
