@@ -5,6 +5,7 @@ concat      = require 'gulp-concat'
 imagemin    = require 'gulp-imagemin'
 pleeease    = require 'gulp-pleeease'
 plumber     = require 'gulp-plumber'
+rename      = require 'gulp-rename'
 sass        = require 'gulp-ruby-sass'
 uglify      = require 'gulp-uglify'
 usermin     = require 'gulp-usemin'
@@ -17,8 +18,8 @@ config =
   tmp: '.tmp'
 
 config.dir =
-  js: 'javascripts'
-  css: 'stylesheets'
+  js: 'js'
+  css: 'css'
   bower: 'bower_components'
 
 config.path =
@@ -39,6 +40,13 @@ config.bower =
   ]
 
 load_components = ->
+  gulp.src "#{config.dir.bower}/bootstrap-sass-official/assets/stylesheets/_bootstrap.scss"
+    .pipe rename 'style.scss'
+    .pipe gulp.dest "#{config.src}/#{config.dir.css}"
+
+  gulp.src "#{config.dir.bower}/bootstrap-sass-official/assets/stylesheets/bootstrap/_variables.scss"
+    .pipe gulp.dest "#{config.src}/#{config.dir.css}"
+
   gulp.src config.bower.fonts
     .pipe gulp.dest "#{config.tmp}/fonts"
 
