@@ -1,15 +1,34 @@
 $(function() {
-  k.showDebugLog();
+  // k.showDebugLog();
+  var $containerUnconnected = $('#container-unconnected');
+  var $containerConnected = $('#container-connected');
+  var graphX = new Graph('#graph-acc-x', {
+    max: { y: 1300 },
+    color: '#ff9999'
+  });
+  var graphY = new Graph('#graph-acc-y', {
+    max: { y: 1300 },
+    color: '#99ff99'
+  });
+  var graphZ = new Graph('#graph-acc-z', {
+    max: { y: 1300 },
+    color: '#9999ff'
+  });
+
+  $containerConnected.hide();
 
   var onBtnConnectClicked = function(e) {
-    console.log("connect button clicked");
     k.find();
   };
 
   var onKonashiConnected = function() {
+    $containerUnconnected.hide()
+    $containerConnected.show()
   };
 
   var onKonashiDisconnected = function() {
+    $containerUnconnected.show()
+    $containerConnected.hide()
   };
 
   var onKonashiReady = function() {
@@ -23,22 +42,19 @@ $(function() {
     }, 1000);
   };
 
-  var onKonashiUpdateAccX = function() {
-    k.analogRead(k.AIO0, function(value) {
-      $('#acc-x').text(value);
-    });
+  var onKonashiUpdateAccX = function(data) {
+    $('#acc-x').text(data.value);
+    graphX.add(data.value);
   };
 
-  var onKonashiUpdateAccY = function() {
-    k.analogRead(k.AIO1, function(value) {
-      $('#acc-y').text(value);
-    });
+  var onKonashiUpdateAccY = function(data) {
+    $('#acc-y').text(data.value);
+    graphY.add(data.value);
   };
 
-  var onKonashiUpdateAccZ = function() {
-    k.analogRead(k.AIO2, function(value) {
-      $('#acc-z').text(value);
-    });
+  var onKonashiUpdateAccZ = function(data) {
+    $('#acc-z').text(data.value);
+    graphZ.add(data.value);
   };
 
   $('#btn-connect').on('click', onBtnConnectClicked);

@@ -15,3 +15,21 @@ body.cover-page {
     vertical-align: middle;
   }
 }
+
+.panel-graph {
+  $canvas-height: 320px;
+  position: relative;
+  height: $canvas-height;
+  .panel-body {
+    height: $canvas-height;
+  }
+  canvas {
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: $canvas-height;
+    padding: 20px;
+  }
+}
