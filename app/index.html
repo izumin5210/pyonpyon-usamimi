@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" class="cover-page">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,7 +12,18 @@
   <link href="bower_components/fontawesome/css/font-awesome.min.css" rel="stylesheet">
   <!-- build:endbuid -->
 </head>
-<body>
+<body class="cover-page">
+
+  <div class="site-wrapper">
+    <div class="site-wrapper-inner">
+      <button id="btn-connect" class="btn btn-lg btn-default">Connect !</button>
+      <ul class="list-inline">
+        <li>x: <span id="acc-x"></span></li>
+        <li>y: <span id="acc-y"></span></li>
+        <li>z: <span id="acc-z"></span></li>
+      </ul>
+    </div>
+  </div>
 
   <!-- build:js javascripts/app.js -->
   <script src="bower_components/angular/angular.min.js"></script>
@@ -20,6 +31,7 @@
   <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js"></script>
   <script src="bower_components/lodash/dist/lodash.compat.min.js"></script>
   <script src="bower_components/konashi-bridge.js/js/konashi-bridge.js"></script>
+  <script src="js/top.js"></script>
   <!-- build:endbuild -->
 </body>
 </html>
