@@ -20,28 +20,60 @@
         <button id="btn-connect" class="btn btn-lg btn-default">Connect !</button>
       </div>
       <div id="container-connected" class="container">
-        <div class="panel panel-default panel-graph">
-          <div class="panel-body">
-            <canvas id="graph-acc-x"></canvas>
-            <canvas id="graph-acc-y"></canvas>
-            <canvas id="graph-acc-z"></canvas>
+        <ul class="nav nav-tabs" role="tablist">
+          <li class="active"><a href="#acc-graph" role="tab" data-toggle="tab">グラフ</a></li>
+          <li><a href="#map" role="tab" data-toggle="tab">目的地</a></li>
+        </ul>
+        <div class="tab-content">
+          <div class="tab-pane active" id="acc-graph">
+            <div class="panel panel-default panel-graph">
+              <div class="panel-body">
+                <canvas id="graph-acc-x"></canvas>
+                <canvas id="graph-acc-y"></canvas>
+                <canvas id="graph-acc-z"></canvas>
+              </div>
+            </div>
+            <ul class="list-inline">
+              <li>x: <span id="acc-x"></span></li>
+              <li>y: <span id="acc-y"></span></li>
+              <li>z: <span id="acc-z"></span></li>
+            </ul>
+          </div>
+          <div class="tab-pane" id="map">
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <form class="form-inline" id="form-dest">
+                  <div class="form-group">
+                    <input type="text" class="form-control" name="dest" placeholder="目的地は？">
+                  </div>
+                  <button type="submit" class="btn btn-default">決定</button>
+                </form>
+                <p class="lead">
+                  <span id="dest">目的地</span>まであと: <span id="distance"></span> m
+                </p>
+                <dl class="dl-horizontal">
+                  <dt>緯度</dt>
+                  <dd id="latitude"></dd>
+                  <dt>経度</dt>
+                  <dd id="longitude"></dd>
+                </dl>
+                <div id="map_canvas"></div>
+              </div>
+            </div>
           </div>
         </div>
-        <ul class="list-inline">
-          <li>x: <span id="acc-x"></span></li>
-          <li>y: <span id="acc-y"></span></li>
-          <li>z: <span id="acc-z"></span></li>
-        </ul>
       </div>
     </div>
   </div>
 
+  <script type="text/javascript" src="//maps.googleapis.com/maps/api/js?libraries=places&sensor=true_or_false"></script>
   <!-- build:js javascripts/app.js -->
   <script src="bower_components/angular/angular.min.js"></script>
   <script src="bower_components/jquery/dist/jquery.min.js"></script>
   <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js"></script>
   <script src="bower_components/lodash/dist/lodash.compat.min.js"></script>
   <script src="bower_components/konashi-bridge.js/js/konashi-bridge.js"></script>
+  <script src="bower_components/geolib/dist/geolib.min.js"></script>
   <script src="js/graph-acc.js"></script>
   <script src="js/top.js"></script>
   <!-- build:endbuild -->
