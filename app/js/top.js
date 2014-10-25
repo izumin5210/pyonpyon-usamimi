@@ -33,8 +33,16 @@ $(function() {
 
   var onKonashiReady = function() {
     var accPins = {};
-    k.pinMode(k.LED2, k.OUTPUT);
-    k.digitalWrite(k.LED2, k.HIGH);
+    // var currentLedState = k.LOW;
+    // k.pinMode(k.PIO1, k.OUTPUT);
+    var currentLedState = 0;
+    k.pwmMode(k.PIO1, k.KONASHI_PWM_ENABLE_LED_MODE);
+    setInterval(function() {
+      // currentLedState = (currentLedState === k.HIGH) ? k.LOW : k.HIGH;
+      // k.digitalWrite(k.PIO1, currentLedState);
+      currentLedState = (currentLedState < 100) ? (currentLedState+1): 0;
+      k.pwmLedDrive(k.PIO1, currentLedState);
+    }, 10);
     setInterval(function() {
       $.each([k.AIO0, k.AIO1, k.AIO2], function(pin) {
         k.analogReadRequest(pin);
