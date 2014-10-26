@@ -1,0 +1,156 @@
+@charset "UTF-8";
+body {
+  background-color: #e38692;
+  color: #f6f6f6;
+  padding-top: 70px;
+  font-family: 'ヒラギノ丸ゴ Pro W4', 'Hiragino Maru Gothic ProN', 'ヒラギノ丸ゴ ProN W3', Meiryo, メイリオ, sans-serif;
+  font-size: 20px; }
+
+.background {
+  position: fixed;
+  bottom: 0px;
+  left: 20px;
+  z-index: 100; }
+
+.main-img {
+  text-align: center; }
+
+.container {
+  text-align: center; }
+  .container h3 {
+    margin-bottom: 30px; }
+  .container img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 60px; }
+
+div {
+  text-align: center; }
+
+a {
+  color: #885866; }
+
+a:hover {
+  text-decoration: none;
+  color: #976272; }
+
+p {
+  margin-bottom: 20px; }
+
+ul {
+  font-size: 14px;
+  text-align: left; }
+  ul li {
+    font-size: 16px; }
+
+h2 {
+  text-align: left;
+  margin-bottom: 40px; }
+
+i {
+  font-size: 1.3em;
+  color: inherit; }
+
+.youtube {
+  position: relative;
+  padding-bottom: 56.25%;
+  padding-top: 30px;
+  height: 0;
+  overflow: hidden; }
+  .youtube iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; }
+
+.navbar-default .navbar-nav > li > a {
+  color: #e38692; }
+  .navbar-default .navbar-nav > li > a:hover {
+    color: #edafb7; }
+
+.navbar .nav {
+  margin: 0;
+  display: table;
+  width: 100%; }
+  .navbar .nav li {
+    display: table-cell;
+    float: none;
+    font-size: 16px; }
+    .navbar .nav li a {
+      font-weight: bold;
+      text-align: center; }
+
+.row {
+  text-align: center; }
+
+/* 画面幅が1170px以上になった場合に背景色をつける */
+.main {
+  position: relative;
+  background-color: #e38692;
+  margin-bottom: 30px; }
+
+/* メインcontainerを最大1170pxに指定 */
+/* Bootstrapのコンテンツエリアが最大1170pxのため */
+.main-container {
+  position: relative;
+  max-width: 1170px;
+  margin-left: auto;
+  margin-right: auto; }
+  .main-container img {
+    display: block;
+    margin: auto; }
+
+.main-img {
+  display: block; }
+
+/* メインのテキスト装飾 */
+.main-info h2 {
+  position: absolute;
+  background: rgba(225, 225, 225, 0.3);
+  color: #fff;
+  padding: 10px 10px; }
+
+.main-info2 h2 {
+  position: absolute;
+  background: rgba(225, 225, 225, 0.3);
+  color: #fff;
+  padding: 10px 10px; }
+
+/*bootstrapのメディアクエリに合わせて、表示位置やフォントサイズを調整*/
+@media screen and (max-width: 767px) {
+  .main-info h2 {
+    top: 10px;
+    right: 5px;
+    font-size: 1.3em; }
+
+  .main-info2 h2 {
+    top: 80px;
+    right: 5px;
+    font-size: 1.3em; } }
+@media screen and (min-width: 768px) {
+  .main-info h2 {
+    top: 40px;
+    right: 40px; }
+
+  .main-info2 h2 {
+    top: 120px;
+    right: 40px; } }
+/* Medium devices (desktops, 992px and up) */
+/* Large devices (large desktops, 1200px and up) */
+.separater {
+  font-size: 30px;
+  width: 100%;
+  margin-top: 100px;
+  margin-bottom: 40px;
+  padding: 80px 80px;
+  text-align: center;
+  color: #e38692;
+  border: 1px solid #e7e7e7;
+  border-width: 1px 0;
+  background: #f6f6f6; }
+
+.footer {
+  margin-top: 60px;
+  margin-bottom: 0px;
+  background-color: #de717f; }
