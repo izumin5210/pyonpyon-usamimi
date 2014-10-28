@@ -2,10 +2,33 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/font-awesome.css">
 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+
+  <!-- スムーズスクロール部分の記述 -->
+  <script>
+    $(function(){
+      // #で始まるアンカーをクリックした場合に処理
+      $('a[href^=#]').click(function() {
+        var speed = 400;
+        // アンカーの値取得
+        var href= $(this).attr("href");
+        // 移動先を取得
+        var target = $(href == "#" || href == "" ? 'html' : href);
+        // 移動先を数値で取得
+        var position = target.offset().top;
+        // スムーススクロール
+        $('body,html').animate({scrollTop:position}, speed, 'swing');
+          return false;
+        });
+    });
+  </script>
 
   <title>ぴょんぴょんうさみみ</title>
 </head>
@@ -13,10 +36,18 @@
 
   <div class="navbar navbar-default navbar-fixed-top">
     <div class="container">
-      <div class="navbar-collapse collapse">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-usamimi">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <div class="navbar-collapse collapse" id="navbar-usamimi">
         <ul class="nav navbar-nav">
           <li>
-            <a href="index.html">ぴょんぴょんうさみみ</a>
+            <a href="#top">ぴょんぴょんうさみみ</a>
           </li>
           <li>
             <a href="#about"><i class="fa fa-puzzle-piece"></i> About</a>
@@ -25,7 +56,7 @@
             <a href="#functions"><i class="fa fa-cog"></i> Functions</a>
           </li>
           <li>
-            <a href="#video"><i class="fa fa-video-camera"></i> Videos</a>
+            <a href="#videos"><i class="fa fa-video-camera"></i> Videos</a>
           </li>
           <li>
             <a href="#structures"><i class="fa fa-wrench"></i> Compositions</a>
@@ -35,19 +66,15 @@
     </div>
   </div>
 
-  <a name="top">
-    <div class="main">
+    <div class="main container" id="top">
       <div class="main-container">
-        <img src="img/title.png" alt="メイン" class="main-img">
+        <img src="img/title.png" alt="メイン" class="img-main">
       </div>
     </div>
-  </a>
 
-  <a name="about">
-    <div class="separater">
+    <div class="separater" id="about">
       <i class="fa fa-puzzle-piece"></i> About
     </div>
-  </a>
   <div class="container">
     <img src="img/photo.png" alt="photo">
     <p>うさみみが光って動く！</p>
@@ -58,11 +85,9 @@
     <p>〜All the world needs is USAMIMI !〜</p>
   </div>
 
-  <a name="functions">
-    <div class="separater">
+    <div class="separater" id="functions">
       <i class="fa fa-cog"></i> Functions
     </div>
-  </a>
   <div class="container">
     <div class="row">
       <div class="col-sm-8">
@@ -71,42 +96,46 @@
         <p>こころに合わせて うさみみもぴょんぴょんします。</p>
       </div>
       <div class="col-sm-4">
-        <img src="img/pulse.jpg" alt="pulsesensor">
+        <img src="img/pulse.jpg" alt="pulsesensor" class="img-rounded">
       </div>
+    </div>
 
-      <div class="col-sm-8">
+    <div class="row">
+      <div class="col-sm-8 pull-right">
         <h3><i class="fa fa-map-marker"></i> <strong>目的地</strong> がわかる！</h3>
         <p>iPhoneで目的地を入力し、<br>
           近くに来るとうさみみが光って教えてくれます。</p>
       </div>
+      <div class="col-sm-4 pull-left">
+        <img src="img/destination.png" alt="destination" class="img-rounded">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-8">
+        <h3><i class="fa fa-male"></i> <strong>歩数</strong> がわかる！</h3>
+        <p>歩数計の役割も果たします。ライフログもとれるんです。</p>
+      </div>
       <div class="col-sm-4">
-<!--         <img src="img/destination.jpg" alt="destinations">
--->   </div>
+<!--<img src="img/step.jpg" alt="steps">
+ -->  </div>
+    </div>
 
-<div class="col-sm-8">
-  <h3><i class="fa fa-male"></i> <strong>歩数</strong> がわかる！</h3>
-  <p>歩数計の役割も果たします。ライフログもとれるんです。</p>
-</div>
-<div class="col-sm-4">
-<!--         <img src="img/step.jpg" alt="steps">
--->  </div>
+    <div class="row">
+      <div class="col-sm-8">
+        <h3><i class="fa fa-sun-o"></i> <strong>天気</strong> がわかる！</h3>
+        <p>晴れなら赤、曇りなら緑、雨なら青・・・</p>
+        <p>ぴょんぴょんうさみみは、明日の天気だって教えてくれます。</p>
+      </div>
+      <div class="col-sm-4">
+<!--<img src="img/weather.jpg" alt="weather">
+ -->  </div>
+    </div>
+  </div>
 
-<div class="col-sm-8">
-  <h3><i class="fa fa-sun-o"></i> <strong>天気</strong> がわかる！</h3>
-  <p>晴れなら赤、曇りなら緑、雨なら青・・・</p>
-  <p>ぴょんぴょんうさみみは、明日の天気だって教えてくれます。</p>
-</div>
-<div class="col-sm-4">
-<!--         <img src="img/weather.jpg" alt="weather">
--->  </div>
-</div>
-</div>
-
-<a name="video">
-  <div class="separater">
+  <div class="separater" id="videos">
     <i class="fa fa-video-camera"></i> Videos
   </div>
-</a>
 <div class="container">
   <h2>1. うさみみの動き</h2>
   <div class="youtube">
@@ -114,11 +143,9 @@
   </div>
 </div>
 
-<a name="structures">
-  <div class="separater">
+  <div class="separater" id="structures">
     <i class="fa fa-wrench"></i> Compositions
   </div>
-</a>
 <div class="container">
   <img src="img/structure.png" alt="構成図">
   <div class="row">
@@ -160,10 +187,10 @@
 </div>
 
 <div class="footer">
-  <p>produced by usamimi　　
+  <p>produced by usamimi<br>
   やましー
   <img src="img/icon.png" alt="icon">
-  Masayuki IZUMI
+  いずみん
 </p>
 </div>
 
